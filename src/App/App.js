@@ -1,16 +1,48 @@
 import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
 import AddRecipe from '../AddRecipe/AddRecipe';
+import AddFolder from '../AddFolder/AddFolder';
+import FolderListMain from '../FolderListMain/FolderListMain';
+import Recipe from '../Recipe/Recipe';
+import RecipeListMain from '../RecipeListMain/RecipeListMain';
+import RecipePageMain from '../RecipePageMain/RecipePageMain';
+
 
 class App extends Component {
 
   renderNavRoutes() {
     return (
         <>
-            <Route path="/add-recipe" component={AddRecipe} />
+          {['/', '/folders/:id'].map(path => (
+                    <Route
+                        exact
+                        key={path}
+                        path={path}
+                        component={FolderListMain}
+                    />
+                ))}
+            <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
+            <Route path = '/add-folder' component = {AddFolder} />
+            <Route path = '/add-recipe' component = {AddRecipe} />
         </>
     );
 }
+
+  renderMainRoutes() {
+    return (
+      <>
+        {['/', '/api/folders/:folderId'].map(path => (
+            <Route
+                exact
+                key={path}
+                path={path}
+                component={FolderListMain}
+            />
+        ))}
+        <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
+      </>
+    )
+  }
 
   render() {
     return (
