@@ -48,6 +48,7 @@ class App extends Component {
     return (
       <div className = 'App'>
         <nav className = 'App_nav'>Navigation</nav>
+          <h4>This will be the place for navigation links to Home, Recipe List, Folder List, Add Recipe and Add Folder areas</h4>
         <header className = 'App_header'>
           <h1>Kitchen Community</h1>
           <h2>Share your favorite meal idea and kitchen tips</h2>
