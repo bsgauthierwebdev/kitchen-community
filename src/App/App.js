@@ -47,6 +47,22 @@ class App extends Component {
   render() {
     return (
       <div className = 'App'>
+        <Route
+            path = '/recipes'
+            component = {RecipeListMain}
+            />
+          <Route
+            path = '/folders'
+            component = {FolderListMain}
+            />
+          <Route
+            path = '/add-recipe'
+            component = {AddRecipe}
+            />
+          <Route
+            path = '/add-folder'
+            component = {AddFolder}
+            />
         <nav className = 'App_nav'>Navigation</nav>
           <h4>This will be the place for navigation links to Home, Recipe List, Folder List, Add Recipe and Add Folder areas</h4>
           <nav>
@@ -104,22 +120,6 @@ class App extends Component {
                 <button type = 'submit'>Log In</button>
             </form>
           </section>
-          <Route
-            path = '/recipes'
-            component = {RecipeListMain}
-            />
-          <Route
-            path = '/folders'
-            component = {FolderListMain}
-            />
-          <Route
-            path = '/add-recipe'
-            component = {AddRecipe}
-            />
-          <Route
-            path = '/add-folder'
-            component = {AddFolder}
-            />
       </main>
       </div>
       
