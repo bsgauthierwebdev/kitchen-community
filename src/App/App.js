@@ -50,10 +50,10 @@ class App extends Component {
         <nav className = 'App_nav'>Navigation</nav>
           <h4>This will be the place for navigation links to Home, Recipe List, Folder List, Add Recipe and Add Folder areas</h4>
           <nav>
-            <Link to = '/RecipeListMain'>Home</Link>
-            <Link to = '/FolderListMain'>Folders</Link>
-            <Link to = 'AddFolder'>Add Folder</Link>
-            <Link to = 'AddRecipe'>Add Recipe</Link>
+            <Link to = '/recipes'>Home</Link>
+            <Link to = '/folders'>Folders</Link>
+            <Link to = '/add-folder'>Add Folder</Link>
+            <Link to = '/add-recipe'>Add Recipe</Link>
           </nav>
         <header className = 'App_header'>
           <h1>Kitchen Community</h1>
