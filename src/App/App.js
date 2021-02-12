@@ -10,45 +10,51 @@ import RecipePageMain from '../RecipePageMain/RecipePageMain';
 
 class App extends Component {
 
-  renderNavRoutes() {
-    return (
-        <>
-          {['/', '/folders/:id'].map(path => (
-                    <Route
-                        exact
-                        key={path}
-                        path={path}
-                        component={FolderListMain}
-                    />
-                ))}
-            <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
-            <Route path = '/add-folder' component = {AddFolder} />
-            <Route path = '/add-recipe' component = {AddRecipe} />
-        </>
-    );
-}
+//   renderNavRoutes() {
+//     return (
+//         <>
+//           {['/', '/folders/:id'].map(path => (
+//                     <Route
+//                         exact
+//                         key={path}
+//                         path={path}
+//                         component={FolderListMain}
+//                     />
+//                 ))}
+//             <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
+//             <Route path = '/add-folder' component = {AddFolder} />
+//             <Route path = '/add-recipe' component = {AddRecipe} />
+//         </>
+//     );
+// }
 
-  renderMainRoutes() {
-    return (
-      <>
-        {['/', '/api/folders/:folderId'].map(path => (
-            <Route
-                exact
-                key={path}
-                path={path}
-                component={FolderListMain}
-            />
-        ))}
-        <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
-      </>
-    )
-  }
+//   renderMainRoutes() {
+//     return (
+//       <>
+//         {['/', '/api/folders/:folderId'].map(path => (
+//             <Route
+//                 exact
+//                 key={path}
+//                 path={path}
+//                 component={FolderListMain}
+//             />
+//         ))}
+//         <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
+//       </>
+//     )
+//   }
 
   render() {
     return (
       <div className = 'App'>
         <nav className = 'App_nav'>Navigation</nav>
-          <h4>This will be the place for navigation links to Home, Recipe List, Folder List, <a href = '/add-recipe'>Add Recipe</a> and <a href = '/add-folder'>Add Folder</a> areas</h4>
+          <h4>This will be the place for navigation links to Home, Recipe List, Folder List, Add Recipe and Add Folder areas</h4>
+          <nav>
+            <Link to = '/RecipeListMain'>Home</Link>
+            <Link to = '/FolderListMain'>Folders</Link>
+            <Link to = 'AddFolder'>Add Folder</Link>
+            <Link to = 'AddRecipe'>Add Recipe</Link>
+          </nav>
         <header className = 'App_header'>
           <h1>Kitchen Community</h1>
           <h2>Share your favorite meal idea and kitchen tips</h2>
@@ -66,19 +72,19 @@ class App extends Component {
             </header>
             <form class='signup-form'>
                 <div>
-                  <label for="first-name">First name</label>
+                  <label htmlFor="first-name">First name</label>
                   <input placeholder='First Name' type="text" name='first-name' id='first-name' />
                 </div>
                 <div>
-                  <label for="last-name">Last name</label>
+                  <label htmlFor="last-name">Last name</label>
                   <input type="text" name='last-name' id='last-name' placeholder='Last Name' />
                 </div>
                 <div>
-                  <label for="username">Email</label>
+                  <label htmlFor="username">Email</label>
                   <input type="text" name='username' id='username' />
                 </div>
                 <div>
-                  <label for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input type="password" name='password' id='password' />
                 </div>
                 <button type='submit'>Sign Up</button>
@@ -98,6 +104,22 @@ class App extends Component {
                 <button type = 'submit'>Log In</button>
             </form>
           </section>
+          <Route
+            path = '/recipes'
+            component = {RecipeListMain}
+            />
+          <Route
+            path = '/folders'
+            component = {FolderListMain}
+            />
+          <Route
+            path = '/add-recipe'
+            component = {AddRecipe}
+            />
+          <Route
+            path = '/add-folder'
+            component = {AddFolder}
+            />
       </main>
       </div>
       
