@@ -1,84 +1,270 @@
-import React from 'react';
+import React, {Component} from 'react';
+import RecipeError from '../RecipeError';
+import ValidationError from '../ValidationError';
+import ApiContext from '../ApiContext';
+import FolderOptions from '../FolderOptions';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
-export default function AddRecipe() {
-    return (
-        <div className = 'addRecipe'>
-            <h2>Add Your Recipes and Kitchen Tips Here</h2>
-            <form id = 'addRecipe__input'>
-                <section className = 'addRecipe__title'>
-                    <label htmlFor = 'addRecipe__title-input'>Title</label>
-                    <input 
-                        type = 'text'
-                        name = 'name'
-                        id = 'name'
-                        placeholder = 'Macaroni and Cheese'
-                        required />
-                </section>
-                <section className = 'addRecipe__prep-time'>
-                    <label htmlFor = 'addRecipe__prep-time-input'>Prep Time</label>
-                    <input
-                        type = 'text'
-                        name = 'name'
-                        id = 'name'
-                        placeholder = '30 minutes'
-                        required />
-                </section>
-                <section className = 'addRecipe__cook-time'>
-                    <label htmlFor = 'addRecipe__cook-time-input'>Cook Time</label>
-                    <input
-                        type = 'text'
-                        name = 'name'
-                        id = 'name'
-                        placeholder = '1 hour'
-                        required />
-                </section>
-                <section className = 'addRecipe__servings'>
-                    <label htmlFor = 'addRecipe__servings-input'>Servings</label>
-                    <input
-                        type = 'text'
-                        name = 'name'
-                        id = 'name'
-                        placeholder = '4'
-                        required />
-                </section>
-                <section className = 'addRecipe__ingredients'>
-                    <label htmlFor = 'addRecipe__ingredients'>
-                        Ingredients and/or Equipment
-                    </label>
-                    <textarea 
-                        name = 'addRecipe__equipment' 
-                        rows = '10'
-                        placeholder = 'add your ingredients and equipment here'
-                        required 
-                    />
-                </section>
-                <section className = 'addRecipe-directions'>
-                    <label htmlFor = 'addRecipe__directions-input'>Directions</label>
-                    <textarea
-                        name = 'addRecipe__instructions'
-                        rows = '20'
-                        placeholder = 'add your directions here'
-                        required
-                    />
-                </section>
-                <section className = 'addRecipe__type'>
-                    <label htmlFor = 'addRecipe__type-input'>Submission Type:</label>
-                    <select name = 'addRecipe__folder' required>
-                        <option value = '' selected = 'selected'>Choose a Category</option>
-                        <option value = 'asian'>Asian</option>
-                        <option value = 'bbq'>BBQ</option>
-                        <option value = 'comfort-food'>Comfort Food</option>
-                        <option value = 'italian'>Italian</option>
-                        <option value = 'hacks-and-hints'>Kitchen Hacks and Hints</option>
-                        <option value = 'mediterranean'>Mediterranean</option>
-                        <option value = 'seafood'>Seafood</option>
-                        <option value = 'vegetarian-and-vegan'>Vegetarian / Vegan</option>
-                    </select>
-                </section>
+class AddRecipe extends Component {
+    static contextType = ApiContext;
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: {
+                value: "",
+                touched: false
+            },
+            modified: "",
+            description: {
+                value: "",
+                touched: false
+            },
+            prepTime: {
+                value: "",
+                touched: false
+            },
+            cookTime: {
+                value: "",
+                touched: false
+            },
+            servings: {
+                value: "",
+                touched: false
+            },
+            ingredients: {
+                value: "",
+                touched: false
+            },
+            directions: {
+                value: "",
+                touched: false
+            },
+            folderId: {
+                value: "",
+                touched: false
+            }
+        };
+    }
+
+    updateName(name, modified) {
+        this.setState({name: {value: name, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updateModified(modified) {
+        this.setState({modified: modified});
+    }
+
+    updateDescription(description) {
+        this.setState({description: {value: description, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updatePrepTime(prepTime) {
+        this.setState({prepTime: {value: prepTime, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updateCookTime(cookTime) {
+        this.setState({cookTime: {value: cookTime, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updateServings(servings) {
+        this.setState({servings: {value: servings, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updateIngredients(ingredients) {
+        this.setState({ingredients: {value: ingredients, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updateDirections(directions) {
+        this.setState({directions: {value: directions, touched: true}});
+        this.updateModified(modified);
+    }
+
+    updateFolderId = (folder) => {
+        this.setState({folderId: {value: folder, touched: true}});
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const recipe = {
+            name: this.state.name.value,
+            modified: this.state.modified,
+            description: this.state.description.value,
+            prepTime: this.state.prepTime.value,
+            cookTime: this.state.cookTime.value,
+            servings: this.state.servings.value,
+            ingredients: this.state.ingredients.value,
+            directions: this.state.directions.value,
+            folderId: this.state.folderId.value
+        }
+            this.context.addRecipe(recipe)
+            this.props.history.push('/')
+    }
+
+    timeStamp() {
+        moment().toDate()
+    }
+
+    validateName() {
+        const name = this.state.name.value.trim();
+        if (name.length === 0) {
+            return `Name is required.`;
+        }
+        else if (name.length < 3) {
+            return `Name must me at least three characters.`
+        }
+    }
+
+    validateDescription() {
+        const description = this.state.description.value.trim();
+        if (description.length === 0) {
+            return `Description is required to create this recipe.`
+        }
+    }
+    
+    validateIngredients() {
+        const ingredients = this.state.ingredients.value.trim();
+        if (ingredients.length === 0) {
+            return `Please add the ingredients or supplies needed for your entry.`
+        }
+    }
+    validateDirections() {
+        const directions = this.state.directions.value.trim();
+        if (directions.length === 0) {
+            return `Please add the directions for your entry.`
+        }
+    }
+
+    validateFolderId() {
+        const folderOption = this.state.folderId.value;
+        if (folderOption === null) {
+            return `Please select a folder for your entry.`
+        }
+    }
+
+    handleClickCancel = () => {
+        this.props.history.push('/')
+    };
+
+    render() {
+        const nameError = this.validateName();
+        const descriptionError = this.validateDescription();
+        const ingredientsError = this.validateIngredients();
+        const directionsError = this.validateDirections();
+        const folderIdError = this.validateFolderId();
+        const modified = moment().toDate();
+
+        return (
+            <>
+            <form className = 'addRecipe' onSubmit = {e => this.handleSubmit(e)}>
+                <RecipeError>
+                    <h2>Add your recipe or kitchen idea here!</h2>
+                    <div className = 'addRecipe__input'>* fields are required</div>
+                    <div>
+                        <label htmlFor = 'nameInput'>Name: </label>
+                        <input
+                            type = 'text'
+                            className = 'addRecipe__name'
+                            name = 'name'
+                            id = 'name'
+                            placeholder = 'add a name for your entry here'
+                            onChange = {e => this.updateName(e.target.value, modified)}
+                            required />
+                            {this.state.name.touched && (
+                                <ValidationError message = {nameError} />
+                            )}
+                    </div>
+                    <div>
+                        <label htmlFor = 'descriptionInput'>Description: </label>
+                        <textarea
+                            name = 'addRecipe__description'
+                            rows = '5'
+                            placeholder = 'add a description of your entry here'
+                            onChange = {e => this.updateDescription(e.target.value, modified)}
+                            required />
+                            {this.state.description.touched && (
+                                <ValidationError message = {descriptionError} />
+                            )}
+                    </div>
+                    <div>
+                        <label htmlFor = 'addRecipe__prepTime'>Prep Time: </label>
+                        <input
+                            type = 'text'
+                            name = 'name'
+                            id = 'name'
+                            placeholder = '30 minutes' />
+                    </div>
+                    <div>
+                        <label htmlFor = 'addRecipe__cookTime'> Cook Time: </label>
+                        <input
+                            type = 'text'
+                            name = 'name'
+                            id = 'name'
+                            placeholder = '1 hour' />
+                    </div>
+                    <div>
+                        <label htmlFor = 'servings'>Servings: {" "}</label>
+                        <input
+                            type = 'number'
+                            name = 'servings'
+                            id = 'servings'
+                            defaultValue = '0'
+                            min = '0'
+                            max = '30' />
+                    </div>
+                    <div>
+                        <label htmlFor = 'addRecipe__ingredients'>Ingredients: </label>
+                        <textarea
+                            name = 'ingredients'
+                            rows = '10'
+                            placeholder = 'add your ingredients and/or equipment here'
+                            required />
+                    </div>
+                    <div>
+                        <label htmlFor = 'addRecipe__directions'>Directions: </label>
+                        <textarea
+                            name = 'directions'
+                            rows = '10'
+                            placeholder = 'add your directions here'
+                            required />
+                    </div>
+                    <div>
+                        <label htmlFor = 'addRecipe__folder'>Choose a Folder: </label>
+                        <FolderOptions
+                            updateFolderId = {this.updateFolderId} />
+                            {this.state.folderId.touched && (
+                                <ValidationError folderIdError = {folderIdError} />
+                            )}
+                    </div>
+                    <button type = 'submit' className = 'addRecipe__button'>
+                        Save
+                    </button>
+                </RecipeError>
             </form>
-            <button type = 'submit'>Submit</button>
-            <button type = 'reset'>Reset</button>
-        </div>
-    )
+            </>
+        )
+    }
 }
 
+AddRecipe.defaultProps = {
+    folders: [],
+    content: "",
+    name: "",
+    error: null
+}
+
+AddRecipe.propTypes = {
+    folders: PropTypes.array,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    content: PropTypes.string.isRequired,
+    modified: PropTypes.string
+}
+
+export default AddRecipe;
