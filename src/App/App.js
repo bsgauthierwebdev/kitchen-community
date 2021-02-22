@@ -1,53 +1,142 @@
 import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import PropTypes from 'prop-types';
 import LandingPage from '../LandingPage/LandingPage';
 import AboutUs from '../AboutUs/AboutUs';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import AddFolder from '../AddFolder/AddFolder';
 import FolderListMain from '../FolderListMain/FolderListMain';
-import Recipe from '../Recipe/Recipe';
 import RecipeListMain from '../RecipeListMain/RecipeListMain';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
-
+import RecipePageNav from '../RecipePageNav/RecipePageNav';
 
 class App extends Component {
+  state = {
+    recipes: [],
+    folders: []
+  };
 
-//   renderNavRoutes() {
-//     return (
-//         <>
-//           {['/', '/folders/:id'].map(path => (
-//                     <Route
-//                         exact
-//                         key={path}
-//                         path={path}
-//                         component={FolderListMain}
-//                     />
-//                 ))}
-//             <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
-//             <Route path = '/add-folder' component = {AddFolder} />
-//             <Route path = '/add-recipe' component = {AddRecipe} />
-//         </>
-//     );
-// }
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/recipes`),
+      fetch(`${config.API_ENDPOINT}/folders`)
+    ])
+      .then(([recipesRes, foldersRes]) => {
+        if (!recipesRes.ok)
+          return recipesRes.json().then(e => Promise.reject(e));
+        if (!foldersRes.ok)
+          return foldersRes.json().then(e => Promise.reject(e));
 
-//   renderMainRoutes() {
-//     return (
-//       <>
-//         {['/', '/api/folders/:folderId'].map(path => (
-//             <Route
-//                 exact
-//                 key={path}
-//                 path={path}
-//                 component={FolderListMain}
-//             />
-//         ))}
-//         <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
-//       </>
-//     )
-//   }
+        return Promise.all([recipesRes.json(), foldersRes.json()]);
+      })
+      .then(([recipes, folders]) => {
+        this.setState({recipes, folders});
+      })
+      .catch(error => {
+        console.error({error});
+      });
+  }
+
+  handleDeleteRecipe = recipeId => {
+    this.setState({
+      recipes: this.state.recipes.filter(recipe => recipe.id !== recipeId)
+    });
+  };
+
+  addFolder = folderName => {
+    fetch(`${config.API_ENDPOINT}/folders`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringity({name: folderName})
+    })
+      .then(res => res.json())
+      .then(resJSON => {
+        console.log(resJSON)
+        const newFolders = [...this.state.folders, resJSON]
+        console.log(newFolders)
+        this.setState({folders: newFolders})
+        console.log(this.state)
+
+        this.props.history.push('/')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  addRecipe = recipeData => {
+    fetch(`config.API_ENDPOINT}/recipes`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(recipeData)
+    })
+      .then(res => res.json())
+      .then(resJSON => {
+        console.log(resJSON)
+        const newRecipes = [...this.state.recipes, resJSON]
+        console.log(newRecipes)
+        this.setState({recipes: newRecipes})
+        console.loglog(this.state)
+
+        this.props.history.push('/')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  renderNavRoutes() {
+    return (
+        <>
+          {['/', '/folders/:id'].map(path => (
+                    <Route
+                        exact
+                        key={path}
+                        path={path}
+                        component={FolderListMain}
+                    />
+                ))}
+            <Route path = '/recipes/:recipeId' component = {RecipePageNav} />
+            <Route path = '/add-folder' component = {AddFolder} />
+            <Route path = '/add-recipe' component = {AddRecipe} />
+        </>
+    );
+}
+
+  renderMainRoutes() {
+    return (
+      <>
+        {['/', '/folders/:folderId'].map(path => (
+            <Route
+                exact
+                key={path}
+                path={path}
+                component={FolderListMain}
+            />
+        ))}
+        <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
+      </>
+    )
+  }
 
   render() {
+    const value = {
+      recipes: this.state.recipes,
+      folders: this.state.folders,
+      deleteRecipe: this.handleDeleteRecipe,
+      addFolder: this.addFolder,
+      addRecipe: this.addRecipe
+    };
     return (
+      <ApiContext.Provider value = {value}>
       <div className = 'App'>
         <nav className = 'App_nav'>Navigation</nav>
           <h4>This will be the place for navigation links to Home, Recipe List, Folder List, Add Recipe and Add Folder areas</h4>
@@ -85,9 +174,24 @@ class App extends Component {
             />
       </main>
       </div>
-      
+      </ApiContext.Provider>
     );
   }
+}
+
+App.defaultProps = {
+  folders: [],
+  content: "",
+  name: "",
+  error: null
+}
+
+App.propTypes = {
+folders: PropTypes.array,
+name: PropTypes.string.isRequired,
+id: PropTypes.string,
+content: PropTypes.string.isRequired,
+modified: PropTypes.string
 }
 
 export default App;
