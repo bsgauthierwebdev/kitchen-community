@@ -1,7 +1,7 @@
 export const findFolder = (folders = [], folderId) =>
     folders.find(folder => folder.id == folderId)
 
-export const fildRecipe = (recipes = [], recipeId) =>
+export const findRecipe = (recipes = [], recipeId) =>
     recipes.find(recipe => recipe.id === recipeId)
 
 export const getRecipesForFolder = (recipes = [], folderId) => (

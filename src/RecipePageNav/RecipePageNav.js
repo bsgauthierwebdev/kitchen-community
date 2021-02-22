@@ -3,7 +3,7 @@ import ApiContext from '../ApiContext';
 import {findRecipe, findFolder} from '../recipes-helpers';
 
 export default class RecipePageNav extends React.Component {
-    statuc defaultProps = {
+    static defaultProps = {
         history: {
             goBack: () => {}
         },
