@@ -4,7 +4,7 @@ export const findFolder = (folders = [], folderId) =>
 export const fildRecipe = (recipes = [], recipeId) =>
     recipes.find(recipe => recipe.id === recipeId)
 
-export const getRecipeForFolder = (recipes = [], folderId) => (
+export const getRecipesForFolder = (recipes = [], folderId) => (
     (!folderId)
         ? recipes
         : recipes.filter(recipe => recipe.folderId == folderId)
