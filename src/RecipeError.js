@@ -2,7 +2,7 @@ import React from 'react';
 
 class RecipeError extends React.Component {
     constructor(props) {
-        super(props),
+        super(props);
         this.state = {
             hasError: false
         };
@@ -14,7 +14,7 @@ class RecipeError extends React.Component {
 
     render() {
         if (this.state.hasError) {
-            return(
+            return (
                 <h2>Sorry, we could not add this.</h2>
             );
         }

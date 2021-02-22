@@ -56,32 +56,32 @@ class AddRecipe extends Component {
         this.setState({modified: modified});
     }
 
-    updateDescription(description) {
+    updateDescription(description, modified) {
         this.setState({description: {value: description, touched: true}});
         this.updateModified(modified);
     }
 
-    updatePrepTime(prepTime) {
+    updatePrepTime(prepTime, modified) {
         this.setState({prepTime: {value: prepTime, touched: true}});
         this.updateModified(modified);
     }
 
-    updateCookTime(cookTime) {
+    updateCookTime(cookTime, modified) {
         this.setState({cookTime: {value: cookTime, touched: true}});
         this.updateModified(modified);
     }
 
-    updateServings(servings) {
+    updateServings(servings, modified) {
         this.setState({servings: {value: servings, touched: true}});
         this.updateModified(modified);
     }
 
-    updateIngredients(ingredients) {
+    updateIngredients(ingredients, modified) {
         this.setState({ingredients: {value: ingredients, touched: true}});
         this.updateModified(modified);
     }
 
-    updateDirections(directions) {
+    updateDirections(directions, modified) {
         this.setState({directions: {value: directions, touched: true}});
         this.updateModified(modified);
     }
