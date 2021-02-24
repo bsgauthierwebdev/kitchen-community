@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   addRecipe = recipeData => {
-    fetch(`config.API_ENDPOINT}/api/recipes`, {
+    fetch(`${config.API_ENDPOINT}/api/recipes`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
