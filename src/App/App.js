@@ -84,7 +84,7 @@ class App extends Component {
         const newRecipes = [...this.state.recipes, resJSON]
         console.log(newRecipes)
         this.setState({recipes: newRecipes})
-        console.loglog(this.state)
+        console.log(this.state)
 
         this.props.history.push('/')
       })
