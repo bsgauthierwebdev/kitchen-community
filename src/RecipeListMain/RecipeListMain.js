@@ -32,14 +32,14 @@ export default class RecipeListMain extends React.Component {
                     )}
                 </ul>
                 <div className = 'RecipeListMain__button-container'>
+                <Link to = '/add-recipe'>
                 <button
-                    tag = {Link}
-                    to = '/add-recipe'
                     type = 'button'
                     className = 'RecipeListMain__add-recipe-button'
                 >
                     Add Recipe
                 </button>
+                </Link>
                 </div>
             </section>
         )

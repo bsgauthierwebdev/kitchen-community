@@ -26,12 +26,14 @@ export default class FolderListMain extends React.Component {
                     )}
                 </ul>
                 <div className = 'FolderListMain__button-wrapper'>
+                    <Link to = '/add-folder'>
                     <button
-                        tag = {Link}
-                        to = '/add-folder'
                         type = 'button'
                         className = 'FolderListMain__add-folder-button'
-                    ></button>
+                    >
+                        Add Folder
+                    </button>
+                    </Link>
                 </div>
             </div>
         )
