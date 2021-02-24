@@ -20,8 +20,8 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/recipes`),
-      fetch(`${config.API_ENDPOINT}/folders`)
+      fetch(`${config.API_ENDPOINT}/api/recipes`),
+      fetch(`${config.API_ENDPOINT}/api/folders`)
     ])
       .then(([recipesRes, foldersRes]) => {
         if (!recipesRes.ok)
@@ -46,13 +46,13 @@ class App extends Component {
   };
 
   addFolder = folderName => {
-    fetch(`${config.API_ENDPOINT}/folders`, {
+    fetch(`${config.API_ENDPOINT}/api/folders`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-type': 'application/json'
       },
-      body: JSON.stringity({name: folderName})
+      body: JSON.stringify({name: folderName})
     })
       .then(res => res.json())
       .then(resJSON => {
@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   addRecipe = recipeData => {
-    fetch(`config.API_ENDPOINT}/recipes`, {
+    fetch(`config.API_ENDPOINT}/api/recipes`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -114,12 +114,12 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {['/', '/folders/:folderId'].map(path => (
+        {['/folders/:folderId'].map(path => (
             <Route
                 exact
                 key={path}
                 path={path}
-                component={FolderListMain}
+                component={RecipeListMain}
             />
         ))}
         <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
@@ -172,6 +172,9 @@ class App extends Component {
             path = '/add-folder'
             component = {AddFolder}
             />
+          {/* <nav className="App__nav">{this.renderNavRoutes()}</nav> */}
+          <div className="App__main">{this.renderMainRoutes()}</div>
+
       </main>
       </div>
       </ApiContext.Provider>

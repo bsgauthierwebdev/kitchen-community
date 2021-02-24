@@ -22,7 +22,7 @@ export default class RecipeListMain extends React.Component {
             <section className = 'RecipeListMain'>
                 <ul>
                     {recipesForFolder.map(recipe =>
-                        <li key = {NodeIterator.id}>
+                        <li key = {recipe.id}>
                             <Recipe
                                 id = {recipe.id}
                                 name = {recipe.name}
@@ -34,7 +34,7 @@ export default class RecipeListMain extends React.Component {
                 <div className = 'RecipeListMain__button-container'>
                 <button
                     tag = {Link}
-                    to = '/add-note'
+                    to = '/add-recipe'
                     type = 'button'
                     className = 'RecipeListMain__add-recipe-button'
                 >

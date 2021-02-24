@@ -55,7 +55,7 @@ export default class Recipe extends React.Component {
                     Delete
                 </button>
                 <div className = 'Recipe__dates'>
-                    <div className = 'Note__dates-modified'>
+                    <div className = 'Recipe__dates-modified'>
                         Modified
                         {' '}
                         <span className = 'Date'>
@@ -68,17 +68,17 @@ export default class Recipe extends React.Component {
     }
 }
 
-Recipe.defaultProps = {
-    folders: [],
-    content: "",
-    name: "",
-    error: null
-  }
+// Recipe.defaultProps = {
+//     folders: [],
+//     content: "",
+//     name: "",
+//     error: null
+//   }
   
-  Recipe.propTypes = {
-    folders: PropTypes.array,
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    content: PropTypes.string.isRequired,
-    modified: PropTypes.string
-  }
+//   Recipe.propTypes = {
+//     folders: PropTypes.array,
+//     name: PropTypes.string.isRequired,
+//     id: PropTypes.string,
+//     content: PropTypes.string.isRequired,
+//     modified: PropTypes.string
+//   }

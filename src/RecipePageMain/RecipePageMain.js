@@ -1,6 +1,7 @@
 import React from 'react';
 import Recipe from '../Recipe/Recipe';
 import ApiContext from '../ApiContext';
+import {findRecipe} from '../recipes-helpers';
 
 export default class RecipePageMain extends React.Component {
     static defaultProps = {
