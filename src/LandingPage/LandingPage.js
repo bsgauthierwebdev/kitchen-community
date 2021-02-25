@@ -7,9 +7,13 @@ class LandingPage extends Component {
             <section className = 'landingPage'>
                 <h1>Kitchen Community</h1>
                 <h2>Share your favorite meal idea and kitchen tips</h2>
-            </section>
-            <section className = 'graphics'>
-            <p><em>Graphics for the page will be added here in the design phase. All navigation will be handled from the Navigation bar at the top of the page</em></p>
+                <p>Join a community of home cooks sharing recipes, ideas and kitchen hacks.</p>
+                <p>With more people than ever cooking at home these days, things can get a little stale. 
+                    Check out recipes from people just like you. Take those shortcuts you've learned and share them with others. 
+                    Find something new and interesting to try for dinner. 
+                    Or just check out a new idea for that mac n' cheese recipe you've been using for ages.</p>
+                <p>At Kitchen Community, we're just like you - a community of home cooks looking to spice up our culinary lives!
+                </p>
             </section>
             </>
         )

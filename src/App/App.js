@@ -86,7 +86,7 @@ class App extends Component {
         this.setState({recipes: newRecipes})
         console.log(this.state)
 
-        this.props.history.push('/')
+        this.props.history.push('/recipes')
       })
       .catch(err => {
         console.log(err)
@@ -138,8 +138,7 @@ class App extends Component {
     return (
       <ApiContext.Provider value = {value}>
       <div className = 'App'>
-        <nav className = 'App_nav'>Navigation</nav>
-          <h4>This will be the place for navigation links to Home, Recipe List, Folder List, Add Recipe and Add Folder areas</h4>
+        <nav className = 'App_nav'><h3>Navigation</h3></nav>
           <nav>
             <Link to = '/about-us'>About Us | </Link>
             <Link to = '/recipes'>Recipes | </Link>

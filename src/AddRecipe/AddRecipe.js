@@ -198,7 +198,8 @@ class AddRecipe extends Component {
                             type = 'text'
                             name = 'name'
                             id = 'name'
-                            placeholder = '30 minutes' />
+                            placeholder = '30 minutes'
+                            onChange = {e => this.updatePrepTime(e.target.value, modified)} />
                     </div>
                     <div>
                         <label htmlFor = 'addRecipe__cookTime'> Cook Time: </label>
@@ -206,7 +207,8 @@ class AddRecipe extends Component {
                             type = 'text'
                             name = 'name'
                             id = 'name'
-                            placeholder = '1 hour' />
+                            placeholder = '1 hour'
+                            onChange = {e => this.updateCookTime(e.target.value, modified)} />
                     </div>
                     <div>
                         <label htmlFor = 'servings'>Servings: {" "}</label>
@@ -216,7 +218,8 @@ class AddRecipe extends Component {
                             id = 'servings'
                             defaultValue = '0'
                             min = '0'
-                            max = '30' />
+                            max = '30'
+                            onChange = {e => this.updateServings(e.target.value, modified)} />
                     </div>
                     <div>
                         <label htmlFor = 'addRecipe__ingredients'>Ingredients: </label>
@@ -224,7 +227,8 @@ class AddRecipe extends Component {
                             name = 'ingredients'
                             rows = '10'
                             placeholder = 'add your ingredients and/or equipment here'
-                            required />
+                            required
+                            onChange = {e => this.updateIngredients(e.target.value, modified)} />
                     </div>
                     <div>
                         <label htmlFor = 'addRecipe__directions'>Directions: </label>
@@ -232,7 +236,8 @@ class AddRecipe extends Component {
                             name = 'directions'
                             rows = '10'
                             placeholder = 'add your directions here'
-                            required />
+                            required
+                            onChange = {e => this.updateDirections(e.target.value, modified)} />
                     </div>
                     <div>
                         <label htmlFor = 'addRecipe__folder'>Choose a Folder: </label>
