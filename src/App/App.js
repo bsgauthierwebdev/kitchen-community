@@ -62,7 +62,7 @@ class App extends Component {
         this.setState({folders: newFolders})
         console.log(this.state)
 
-        this.props.history.push('/')
+        this.props.history.push('/folders')
       })
       .catch(err => {
         console.log(err)
