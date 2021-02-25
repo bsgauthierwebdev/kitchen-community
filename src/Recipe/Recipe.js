@@ -27,7 +27,7 @@ export default class Recipe extends React.Component {
         })
             .then(() => {
                 console.log(`Deleting the recipe`)
-                this.props.history.push('/')
+                this.props.history.push('/recipes')
                 this.context.deleteRecipe(recipeId)
             })
             .catch(error => {
