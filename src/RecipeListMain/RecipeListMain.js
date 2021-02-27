@@ -20,6 +20,16 @@ export default class RecipeListMain extends React.Component {
 
         return (
             <section className = 'RecipeListMain'>
+                <div className = 'RecipeListMain__button-container'>
+                <Link to = '/add-recipe'>
+                <button
+                    type = 'button'
+                    className = 'RecipeListMain__add-recipe-button'
+                >
+                    Add Recipe
+                </button>
+                </Link>
+                </div>
                 <ul>
                     {recipesForFolder.map(recipe =>
                         <li key = {recipe.id}>
@@ -31,16 +41,6 @@ export default class RecipeListMain extends React.Component {
                         </li>
                     )}
                 </ul>
-                <div className = 'RecipeListMain__button-container'>
-                <Link to = '/add-recipe'>
-                <button
-                    type = 'button'
-                    className = 'RecipeListMain__add-recipe-button'
-                >
-                    Add Recipe
-                </button>
-                </Link>
-                </div>
             </section>
         )
     }
