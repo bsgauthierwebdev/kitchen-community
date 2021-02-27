@@ -19,7 +19,7 @@ export default class Recipe extends React.Component {
         const recipeId = this.props.id
         console.log(recipeId)
 
-        fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
+        fetch(`${config.API_ENDPOINT}/api/recipes/${recipeId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
