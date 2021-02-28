@@ -17,10 +17,11 @@ export default class FolderListMain extends React.Component {
                                 className = 'FolderListMain__folder-link'
                                 to = {`/folders/${folder.id}`}
                             >
-                                <span className = 'FolderListMain__num-recipes'>
-                                    {countRecipesForFolder(recipes, folder.id)}
-                                </span>
                                 {folder.name}
+                                {' '}
+                                <span className = 'FolderListMain__num-recipes'>
+                                    ({countRecipesForFolder(recipes, folder.id)})
+                                </span>
                             </NavLink>
                         </li>
                     )}
