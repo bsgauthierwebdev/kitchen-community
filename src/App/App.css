@@ -1,3 +1,51 @@
 .App {
-    display: grid
+    display: grid;
+    grid-template-areas: 'sidebar header' 'sidebar main';
+    grid-template-columns: 2fr, 7fr;
+    grid-template-rows: 120px 1fr;
+    min-height: 100vh;
+}
+
+.App__header {
+    background-color: black;
+    color: #fff;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    grid-area: header;
+    padding-left: 16px;
+    padding-top: 32 px;
+    text-shadow: 2px 1px 2px black;
+}
+
+.App__main {
+    background-color: #102541;
+    color: #fff;
+    grid-area: main;
+    height: calc(100vh - 120px);
+    overflow: auto;
+}
+
+.App__nav {
+    background-color: black;
+    color: #fff;
+    grid-area: sidebar;
+    height: 100vh;
+    overflow: auto;
+    padding-top: 115px;
+}
+
+.landingPage {
+    text-align: center;
+}
+
+.landingPage h1 {
+    font-size: 72px;
+    text-shadow: 3px 1px 3px rgba(126, 124, 124, 0);
+}
+
+.landingPage h2 {
+    font-size: 48px;
+}
+
+.landingPage p {
+    font-size: 20px;
 }

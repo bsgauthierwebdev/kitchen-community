@@ -11,6 +11,7 @@ import FolderListMain from '../FolderListMain/FolderListMain';
 import RecipeListMain from '../RecipeListMain/RecipeListMain';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import RecipePageNav from '../RecipePageNav/RecipePageNav';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -104,9 +105,8 @@ class App extends Component {
                         component={FolderListMain}
                     />
                 ))}
-            <Route path = '/recipes/:recipeId' component = {RecipePageNav} />
-            <Route path = '/add-folder' component = {AddFolder} />
-            <Route path = '/add-recipe' component = {AddRecipe} />
+            {/* <Route path = '/recipes/:recipeId' component = {RecipePageNav} /> */}
+            
         </>
     );
 }
@@ -123,31 +123,7 @@ class App extends Component {
             />
         ))}
         <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
-      </>
-    )
-  }
-
-  render() {
-    const value = {
-      recipes: this.state.recipes,
-      folders: this.state.folders,
-      deleteRecipe: this.handleDeleteRecipe,
-      addFolder: this.addFolder,
-      addRecipe: this.addRecipe
-    };
-    return (
-      <ApiContext.Provider value = {value}>
-      <div className = 'App'>
-        <nav className = 'App_nav'><h3>Navigation</h3></nav>
-          <nav>
-            <Link to = '/about-us'>About Us | </Link>
-            <Link to = '/recipes'>Recipes | </Link>
-            <Link to = '/folders'>Folders | </Link>
-            <Link to = '/add-folder'>Add Folder | </Link>
-            <Link to = '/add-recipe'>Add Recipe </Link>
-          </nav>
-        <main className='App_main'>
-          <Route
+        <Route
             exact path = '/'
             component = {LandingPage}
             />
@@ -171,11 +147,40 @@ class App extends Component {
             path = '/add-folder'
             component = {AddFolder}
             />
-          {/* <nav className="App__nav">{this.renderNavRoutes()}</nav> */}
-          <div className="App__main">{this.renderMainRoutes()}</div>
+        {/* <Route path = '/add-folder' component = {AddFolder} />
+        <Route path = '/add-recipe' component = {AddRecipe} /> */}
+      </>
+    )
+  }
 
-      </main>
-      </div>
+  render() {
+    const value = {
+      recipes: this.state.recipes,
+      folders: this.state.folders,
+      deleteRecipe: this.handleDeleteRecipe,
+      addFolder: this.addFolder,
+      addRecipe: this.addRecipe
+    };
+    return (
+      <ApiContext.Provider value = {value}>
+        <div className = 'App'>
+          <nav className = 'App__nav'>
+            {this.renderNavRoutes()}
+          </nav>
+          <header className = 'App__header'><h3>Navigation</h3>
+            <nav>
+              <Link to = '/'>Home | </Link>
+              <Link to = '/about-us'>About Us | </Link>
+              <Link to = '/recipes'>Recipes | </Link>
+              <Link to = '/folders'>Folders | </Link>
+              <Link to = '/add-folder'>Add Folder | </Link>
+              <Link to = '/add-recipe'>Add Recipe </Link>
+            </nav>
+          </header>
+          <main className='App__main'>
+            {this.renderMainRoutes()}
+        </main>
+        </div>
       </ApiContext.Provider>
     );
   }

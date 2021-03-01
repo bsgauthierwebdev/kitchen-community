@@ -1,0 +1,15 @@
+.landingPage {
+    font-size: 32px;
+    text-align: center;
+}
+
+.landingPage h1 {
+    font-size: 60px;
+    text-shadow: 3px 1px 3px rgba(126, 124, 124, 0);
+    text-align: center;
+}
+
+.landingPage h2 {
+    font-size: 48px;
+    text-align: center;
+}
