@@ -135,10 +135,10 @@ class App extends Component {
               path = '/recipes'
               component = {RecipeListMain}
               />
-          <Route
+          {/* <Route
             path = '/folders'
             component = {FolderListMain}
-            />
+            /> */}
           <Route
             path = '/add-recipe'
             component = {AddRecipe}
