@@ -3,6 +3,7 @@ import RecipeError from '../RecipeError';
 import ValidationError from '../ValidationError';
 import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext';
+import './AddFolder.css';
 
 class AddFolder extends Component {
     static contextType = ApiContext;
@@ -43,8 +44,9 @@ class AddFolder extends Component {
                 <form className = 'newFolder'
                     onSubmit = {(e) => this.handleSubmit(e)}>
                         <RecipeError>
-                            <h2>Add a New Folder</h2>
+                            <h1>Add a New Folder</h1>
                             <label htmlFor = 'newFolder__name'>Folder Name:</label>
+                            <br />
                             <input
                                 type = 'text'
                                 className = 'newFolder__input'

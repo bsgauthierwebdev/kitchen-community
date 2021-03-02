@@ -5,6 +5,7 @@ import ApiContext from '../ApiContext';
 import FolderOptions from '../FolderOptions';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import './AddRecipe.css';
 
 class AddRecipe extends Component {
     static contextType = ApiContext;
@@ -164,13 +165,14 @@ class AddRecipe extends Component {
             <>
             <form className = 'addRecipe' onSubmit = {e => this.handleSubmit(e)}>
                 <RecipeError>
-                    <h2>Add your recipe or kitchen idea here!</h2>
+                    <h1>Add your recipe or kitchen idea here!</h1>
                     <div className = 'addRecipe__input'>* fields are required</div>
-                    <div>
-                        <label htmlFor = 'nameInput'>Name: </label>
+                    <div className = 'addRecipe__name'>
+                        <label htmlFor = 'nameInput'>*Name: </label>
+                        <br />
                         <input
                             type = 'text'
-                            className = 'addRecipe__name'
+                            className = 'addRecipe__name-input'
                             name = 'name'
                             id = 'name'
                             placeholder = 'add a name for your entry here'
@@ -180,10 +182,11 @@ class AddRecipe extends Component {
                                 <ValidationError message = {nameError} />
                             )}
                     </div>
-                    <div>
-                        <label htmlFor = 'descriptionInput'>Description: </label>
+                    <div className = 'addRecipe__description'>
+                        <label htmlFor = 'descriptionInput'>*Description: </label>
+                        <br />
                         <textarea
-                            name = 'addRecipe__description'
+                            name = 'addRecipe__description-input'
                             rows = '5'
                             placeholder = 'add a description of your entry here'
                             onChange = {e => this.updateDescription(e.target.value, modified)}
@@ -192,8 +195,9 @@ class AddRecipe extends Component {
                                 <ValidationError message = {descriptionError} />
                             )}
                     </div>
-                    <div>
-                        <label htmlFor = 'addRecipe__prepTime'>Prep Time: </label>
+                    <div className = 'addRecipe__prepTime'>
+                        <label htmlFor = 'prepTimeInput'>Prep Time: </label>
+                        <br />
                         <input
                             type = 'text'
                             name = 'name'
@@ -201,8 +205,9 @@ class AddRecipe extends Component {
                             placeholder = '30 minutes'
                             onChange = {e => this.updatePrepTime(e.target.value, modified)} />
                     </div>
-                    <div>
-                        <label htmlFor = 'addRecipe__cookTime'> Cook Time: </label>
+                    <div className = 'addRecipe__cookTime'>
+                        <label htmlFor = 'cookTimeInput'> Cook Time: </label>
+                        <br />
                         <input
                             type = 'text'
                             name = 'name'
@@ -210,8 +215,9 @@ class AddRecipe extends Component {
                             placeholder = '1 hour'
                             onChange = {e => this.updateCookTime(e.target.value, modified)} />
                     </div>
-                    <div>
-                        <label htmlFor = 'servings'>Servings: {" "}</label>
+                    <div className = 'addRecipe__servings'>
+                        <label htmlFor = 'servingsInput'>Servings: {" "}</label>
+                        <br />
                         <input
                             type = 'number'
                             name = 'servings'
@@ -221,8 +227,9 @@ class AddRecipe extends Component {
                             max = '30'
                             onChange = {e => this.updateServings(e.target.value, modified)} />
                     </div>
-                    <div>
-                        <label htmlFor = 'addRecipe__ingredients'>Ingredients: </label>
+                    <div className = 'addRecipe__ingredients'>
+                        <label htmlFor = 'ingredientsInput'>*Ingredients: </label>
+                        <br />
                         <textarea
                             name = 'ingredients'
                             rows = '10'
@@ -230,8 +237,9 @@ class AddRecipe extends Component {
                             required
                             onChange = {e => this.updateIngredients(e.target.value, modified)} />
                     </div>
-                    <div>
-                        <label htmlFor = 'addRecipe__directions'>Directions: </label>
+                    <div className = 'addRecipe__directions'>
+                        <label htmlFor = 'directionsInput'>*Directions: </label>
+                        <br />
                         <textarea
                             name = 'directions'
                             rows = '10'
@@ -239,8 +247,9 @@ class AddRecipe extends Component {
                             required
                             onChange = {e => this.updateDirections(e.target.value, modified)} />
                     </div>
-                    <div>
-                        <label htmlFor = 'addRecipe__folder'>Choose a Folder: </label>
+                    <div className = 'addRecipe__folder'>
+                        <label htmlFor = 'folderInput'>*Choose a Folder: </label>
+                        <br />
                         <FolderOptions
                             updateFolderId = {this.updateFolderId} />
                             {this.state.folderId.touched && (

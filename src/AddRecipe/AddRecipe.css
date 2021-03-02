@@ -1,0 +1,30 @@
+.AddRecipe {
+    --recipe-height: 88px;
+    background-color: #102541;
+    color: white;
+    height: var(--recipe-height);
+    margin-bottom: 8px;
+    max-width: 380px;
+    padding: 8px 0 8px 8px;
+    position: relative;
+}
+
+.addRecipe h1 {
+    font-size: 48px;
+}
+
+.addRecipe__name, 
+.addRecipe__description,
+.addRecipe__prepTime,
+.addRecipe__cookTime,
+.addRecipe__servings,
+.addRecipe__ingredients,
+.addRecipe__directions,
+.addRecipe__folder {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 75%;
+}

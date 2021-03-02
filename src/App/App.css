@@ -16,20 +16,20 @@
     text-shadow: 2px 1px 2px black;
 }
 
+.App__header a {
+    text-decoration: none;
+}
+
 .App__main {
     background-color: #102541;
     color: #fff;
     grid-area: main;
-    height: calc(100vh - 120px);
-    overflow: auto;
 }
 
 .App__nav {
     background-color: black;
     color: #fff;
     grid-area: sidebar;
-    height: 100vh;
-    overflow: auto;
     padding-top: 115px;
 }
 

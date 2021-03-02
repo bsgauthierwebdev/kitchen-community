@@ -147,8 +147,6 @@ class App extends Component {
             path = '/add-folder'
             component = {AddFolder}
             />
-        {/* <Route path = '/add-folder' component = {AddFolder} />
-        <Route path = '/add-recipe' component = {AddRecipe} /> */}
       </>
     )
   }
@@ -167,7 +165,7 @@ class App extends Component {
           <nav className = 'App__nav'>
             {this.renderNavRoutes()}
           </nav>
-          <header className = 'App__header'><h3>Navigation</h3>
+          <header className = 'App__header'><h2>Kitchen Community</h2>
             <nav>
               <Link to = '/'>Home | </Link>
               <Link to = '/about-us'>About Us | </Link>
@@ -179,7 +177,7 @@ class App extends Component {
           </header>
           <main className='App__main'>
             {this.renderMainRoutes()}
-        </main>
+          </main>
         </div>
       </ApiContext.Provider>
     );

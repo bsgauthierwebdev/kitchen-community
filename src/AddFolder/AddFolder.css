@@ -1,0 +1,13 @@
+.AddFolder {
+    --recipe-height: 88px;
+    background-color: #102541;
+    color: white;
+    height: var(--recipe-height);
+    max-width: 380px;
+    padding: 8px 0 8px 8ps;
+    position: relative;
+}
+
+.AddFolder h1 {
+    font-size: 120px;
+}

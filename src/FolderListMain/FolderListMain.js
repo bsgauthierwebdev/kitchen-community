@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink, Link} from 'react-router-dom';
 import ApiContext from '../ApiContext';
 import {countRecipesForFolder} from '../recipes-helpers';
+import './FolderListMain.css';
 
 export default class FolderListMain extends React.Component {
     static contextType = ApiContext;
@@ -10,6 +11,7 @@ export default class FolderListMain extends React.Component {
         const {folders = [], recipes = []} = this.context
         return (
             <div className = 'FolderListMain'>
+                <label htmlFor = 'FolderListMain__title'>Folders: </label>
                 <ul className = 'FolderListMain__list'>
                     {folders.map(folder =>
                         <li key = {folder.id}>

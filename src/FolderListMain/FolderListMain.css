@@ -1,0 +1,17 @@
+.FolderListMain {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+.FolderListMain__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.FolderListMain__folder-link {
+    text-decoration: none;
+    color: white;
+    display: block;
+}

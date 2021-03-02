@@ -6,7 +6,7 @@ class LandingPage extends Component {
             <>
             <section className = 'landingPage'>
                 <section className = 'landingPage__title'>
-                <h1>Kitchen Community</h1>
+                <h1>Welcome to Kitchen Community!</h1>
                 </section>
                 <section className = 'landingPage__image'>
                     <img src = 'https://i.pinimg.com/originals/8d/72/9a/8d729a14c07f3159ff82f69b659fd7ec.jpg' />
