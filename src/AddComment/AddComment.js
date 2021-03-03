@@ -1,4 +1,4 @@
-import React, {Compoment} from 'react';
+import React, {Component} from 'react';
 import RecipeError from '../RecipeError';
 import ValidationError from '../ValidationError';
 import ApiContext from '../ApiContext';
@@ -9,7 +9,7 @@ import { render } from '@testing-library/react';
 class AddComment extends Component {
     static contextType = ApiContext;
     constructor(props) {
-        super(props) {
+        super(props);
             this.state = {
                 name: {
                     value: "",
@@ -54,7 +54,7 @@ class AddComment extends Component {
                 recipeId: this.state.recipeId.value
             }
                 this.context.addComment(comment)
-                this.props.history.push('/')
+                this.props.history.push('/recipes/:id')
         }
 
         timeStamp() {
@@ -78,13 +78,6 @@ class AddComment extends Component {
             }
         }
 
-        validateRecipeId() {
-            const recipeOption = this.state.recipeId.value;
-            if (recipeOption === null) {
-                return 'Picking a recipe is required'
-            }
-        }
-
         handleClickCancel = () => {
             this.props.history.push('/')
         };
@@ -92,7 +85,6 @@ class AddComment extends Component {
         render() {
             const nameError = this.validateName();
             const contentError = this.validateContent();
-            const recipeIdError = this.validateRecipeId();
             const modified = moment().toDate();
 
             return

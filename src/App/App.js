@@ -10,7 +10,6 @@ import AddFolder from '../AddFolder/AddFolder';
 import FolderListMain from '../FolderListMain/FolderListMain';
 import RecipeListMain from '../RecipeListMain/RecipeListMain';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
-import RecipePageNav from '../RecipePageNav/RecipePageNav';
 import './App.css';
 
 class App extends Component {
@@ -97,16 +96,13 @@ class App extends Component {
   renderNavRoutes() {
     return (
         <>
-          {['/', '/folders/:id'].map(path => (
+          {['/'].map(path => (
                     <Route
-                        exact
                         key={path}
                         path={path}
                         component={FolderListMain}
                     />
-                ))}
-            {/* <Route path = '/recipes/:recipeId' component = {RecipePageNav} /> */}
-            
+                ))}            
         </>
     );
 }
@@ -132,13 +128,9 @@ class App extends Component {
             component = {AboutUs}
             />
           <Route
-              path = '/recipes'
+              exact path = '/recipes'
               component = {RecipeListMain}
               />
-          {/* <Route
-            path = '/folders'
-            component = {FolderListMain}
-            /> */}
           <Route
             path = '/add-recipe'
             component = {AddRecipe}
@@ -162,19 +154,19 @@ class App extends Component {
     return (
       <ApiContext.Provider value = {value}>
         <div className = 'App'>
-          <nav className = 'App__nav'>
-            {this.renderNavRoutes()}
-          </nav>
           <header className = 'App__header'><h2>Kitchen Community</h2>
             <nav>
               <Link to = '/'>Home | </Link>
               <Link to = '/about-us'>About Us | </Link>
               <Link to = '/recipes'>Recipes | </Link>
-              <Link to = '/folders'>Folders | </Link>
+              {/* <Link to = '/folders'>Folders | </Link> */}
               <Link to = '/add-folder'>Add Folder | </Link>
               <Link to = '/add-recipe'>Add Recipe </Link>
             </nav>
           </header>
+          <div className = 'App__nav'>
+            {this.renderNavRoutes()}
+          </div>
           <main className='App__main'>
             {this.renderMainRoutes()}
           </main>

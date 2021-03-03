@@ -22,7 +22,7 @@ export default class FolderListMain extends React.Component {
                                 {folder.name}
                                 {' '}
                                 <span className = 'FolderListMain__num-recipes'>
-                                    ({countRecipesForFolder(recipes, folder.id)})
+                                    {countRecipesForFolder(recipes, folder.id)}
                                 </span>
                             </NavLink>
                         </li>

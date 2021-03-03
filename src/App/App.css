@@ -1,7 +1,7 @@
 .App {
     display: grid;
     grid-template-areas: 'sidebar header' 'sidebar main';
-    grid-template-columns: 2fr, 7fr;
+    grid-template-columns: 300px auto;
     grid-template-rows: 120px 1fr;
     min-height: 100vh;
 }
@@ -24,6 +24,7 @@
     background-color: #102541;
     color: #fff;
     grid-area: main;
+    padding: 15px;
 }
 
 .App__nav {
@@ -48,4 +49,59 @@
 
 .landingPage p {
     font-size: 20px;
+}
+
+.content {
+    width: 100%;
+}
+
+.has-sidebar .content {
+    width: 70%;
+}
+
+.sidebar {
+    width: 30%;
+}
+
+.Recipe__title {
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.RecipePageMain {
+    font-size: 20px;
+    overflow-wrap: normal;
+}
+
+.aboutUs__intro {
+    font-size: 24px;
+    text-align: center;
+}
+
+.aboutUs__intro h3 {
+    font-size: 36px;
+}
+
+.AboutUs {
+    align-content: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.FolderListMain__num-recipes {
+    background-color: #102541;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.FolderListMain__folder-link {
+    display: flex;
+    align-items: center;
 }
