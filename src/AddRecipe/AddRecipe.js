@@ -104,7 +104,7 @@ class AddRecipe extends Component {
             folderId: this.state.folderId.value
         }
             this.context.addRecipe(recipe)
-            this.props.history.push('/')
+            this.props.history.push('/recipes')
     }
 
     timeStamp() {
