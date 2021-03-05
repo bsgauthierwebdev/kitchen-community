@@ -4,7 +4,6 @@ import ValidationError from '../ValidationError';
 import ApiContext from '../ApiContext';
 import FolderOptions from '../FolderOptions';
 import moment from 'moment';
-import PropTypes from 'prop-types';
 import './AddRecipe.css';
 
 class AddRecipe extends Component {
@@ -271,14 +270,6 @@ AddRecipe.defaultProps = {
     content: "",
     name: "",
     error: null
-}
-
-AddRecipe.propTypes = {
-    folders: PropTypes.array,
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    content: PropTypes.string.isRequired,
-    modified: PropTypes.string
 }
 
 export default AddRecipe;

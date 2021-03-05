@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import RecipeError from '../RecipeError';
 import ValidationError from '../ValidationError';
-import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext';
 import './AddFolder.css';
 
@@ -75,14 +74,6 @@ AddFolder.defaultProps = {
     content: "",
     name: "",
     error: null
-}
-
-AddFolder.propTypes = {
-    folders: PropTypes.array,
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    content: PropTypes.string,
-    modified: PropTypes.string,
 }
 
 export default AddFolder;

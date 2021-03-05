@@ -3,7 +3,6 @@ import {Redirect, Link} from 'react-router-dom';
 import {format} from 'date-fns';
 import ApiContext from '../ApiContext';
 import config from '../config';
-import PropTypes from 'prop-types';
 
 export default class Recipe extends React.Component {
     static defaultProps = {
@@ -67,18 +66,3 @@ export default class Recipe extends React.Component {
         )
     }
 }
-
-// Recipe.defaultProps = {
-//     folders: [],
-//     content: "",
-//     name: "",
-//     error: null
-//   }
-  
-//   Recipe.propTypes = {
-//     folders: PropTypes.array,
-//     name: PropTypes.string.isRequired,
-//     id: PropTypes.string,
-//     content: PropTypes.string.isRequired,
-//     modified: PropTypes.string
-//   }

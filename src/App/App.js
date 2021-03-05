@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
 import ApiContext from '../ApiContext';
 import config from '../config';
-import PropTypes from 'prop-types';
 import LandingPage from '../LandingPage/LandingPage';
 import AboutUs from '../AboutUs/AboutUs';
 import AddRecipe from '../AddRecipe/AddRecipe';
@@ -181,14 +180,6 @@ App.defaultProps = {
   content: "",
   name: "",
   error: null
-}
-
-App.propTypes = {
-folders: PropTypes.array,
-name: PropTypes.string.isRequired,
-id: PropTypes.string,
-content: PropTypes.string.isRequired,
-modified: PropTypes.string
 }
 
 export default App;
