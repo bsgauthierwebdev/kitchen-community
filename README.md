@@ -1,6 +1,48 @@
-# Getting Started with Create React App
+# Kitchen Community
+https://kitchen-community.vercel.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<hr>
+
+# What is Kitchen Community?
+<hr />
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20home-page-1.jpg'>
+
+Kitchen Community is a crowd-sourced application for home cooks to share their ideas, inspirations and passions.
+
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20about-us.jpg'>
+
+With Kitchen Community, people can find new and exciting meals to make for their families without the pressures of matching the talents of a celebrity chef, or creating Instagram and Pintrest worthy meals. Good food and new ideas for regular people.
+
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20recipe.jpg'>
+
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20recipe.jpg'>
+
+With Kitchen Community, the users help to create the content and help organize their submissions.
+
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20add-recipe.jpg'>
+
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20add-folder.jpg'>
+
+<hr>
+
+## API Documentation
+<a href = 'https://github.com/BsgauthierWebDev/kitchen-community-server'>Kitchen Community API source code</a>
+
+<hr>
+
+## Technology Used
+<ul>
+    <li>Javascript</li>
+    <li>React</li>
+    <li>JSX</li>
+    <li>HTML</li>
+    <li>Express</li>
+    <li>Node</li>
+    <li>SQL</li>
+    <li>Heroku</li>
+    <li>Vercel</li>
 
 ## Available Scripts
 
