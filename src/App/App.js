@@ -92,20 +92,6 @@ class App extends Component {
       })
   }
 
-//   renderNavRoutes() {
-//     return (
-//         <>
-//           {['/'].map(path => (
-//                     <Route
-//                         key={path}
-//                         path={path}
-//                         component={FolderListMain}
-//                     />
-//                 ))}            
-//         </>
-//     );
-// }
-
   renderMainRoutes() {
     return (
       <>
@@ -167,9 +153,6 @@ class App extends Component {
               <Link to = '/add-recipe'>Add Recipe </Link>
             </nav>
           </header>
-          {/* <div className = 'App__nav'>
-            {this.renderNavRoutes()}
-          </div> */}
           <main className='App__main'>
             {this.renderMainRoutes()}
           </main>
