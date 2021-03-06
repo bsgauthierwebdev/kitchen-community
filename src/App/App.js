@@ -85,7 +85,7 @@ class App extends Component {
         this.setState({recipes: newRecipes})
         console.log(this.state)
 
-        this.props.history.push('/recipes')
+        this.props.history.push('/')
       })
       .catch(err => {
         console.log(err)
