@@ -26,6 +26,10 @@ class AddFolder extends Component {
         this.props.history.push('/');
     }
 
+    handleClickCancel = () => {
+        this.props.history.push('/folders')
+    };
+
     validateName() {
         const name = this.state.name.value.trim();
         if (name.length === 0) {
@@ -56,12 +60,19 @@ class AddFolder extends Component {
                             {this.state.name.touched && (
                                 <ValidationError message = {nameError} />
                             )}
+                            <div>
                             <button
                                 type = 'submit'
                                 className = 'newFolder__submit'
                             >
                                 Save
                             </button>
+                            </div>
+                            <div>
+                            <button type = 'cancel' className = 'addRecipe__cancel' onClick = {this.handleClickCancel}>
+                                Cancel
+                            </button>
+                            </div>
                         </RecipeError>
                 </form>
             </div>

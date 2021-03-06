@@ -149,7 +149,7 @@ class AddRecipe extends Component {
     }
 
     handleClickCancel = () => {
-        this.props.history.push('/')
+        this.props.history.push('/recipes')
     };
 
     render() {
@@ -235,6 +235,9 @@ class AddRecipe extends Component {
                             placeholder = 'add your ingredients and/or equipment here'
                             required
                             onChange = {e => this.updateIngredients(e.target.value, modified)} />
+                            {this.state.description.touched && (
+                                <ValidationError message = {ingredientsError} />
+                            )}
                     </div>
                     <div className = 'addRecipe__directions'>
                         <label htmlFor = 'directionsInput'>*Directions: </label>
@@ -245,6 +248,9 @@ class AddRecipe extends Component {
                             placeholder = 'add your directions here'
                             required
                             onChange = {e => this.updateDirections(e.target.value, modified)} />
+                            {this.state.description.touched && (
+                                <ValidationError message = {directionsError} />
+                            )}
                     </div>
                     <div className = 'addRecipe__folder'>
                         <label htmlFor = 'folderInput'>*Choose a Folder: </label>
@@ -255,9 +261,16 @@ class AddRecipe extends Component {
                                 <ValidationError folderIdError = {folderIdError} />
                             )}
                     </div>
+                    <div>
                     <button type = 'submit' className = 'addRecipe__button'>
                         Save
                     </button>
+                    </div>
+                    <div>
+                    <button type = 'cancel' className = 'addRecipe__cancel' onClick = {this.handleClickCancel}>
+                        Cancel
+                    </button>
+                    </div>
                 </RecipeError>
             </form>
             </>
