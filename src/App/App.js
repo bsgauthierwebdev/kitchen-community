@@ -92,19 +92,19 @@ class App extends Component {
       })
   }
 
-  renderNavRoutes() {
-    return (
-        <>
-          {['/'].map(path => (
-                    <Route
-                        key={path}
-                        path={path}
-                        component={FolderListMain}
-                    />
-                ))}            
-        </>
-    );
-}
+//   renderNavRoutes() {
+//     return (
+//         <>
+//           {['/'].map(path => (
+//                     <Route
+//                         key={path}
+//                         path={path}
+//                         component={FolderListMain}
+//                     />
+//                 ))}            
+//         </>
+//     );
+// }
 
   renderMainRoutes() {
     return (
@@ -135,6 +135,10 @@ class App extends Component {
             component = {AddRecipe}
             />
           <Route
+            exact path = '/folders'
+            component = {FolderListMain}
+            />
+          <Route
             path = '/add-folder'
             component = {AddFolder}
             />
@@ -158,14 +162,14 @@ class App extends Component {
               <Link to = '/'>Home | </Link>
               <Link to = '/about-us'>About Us | </Link>
               <Link to = '/recipes'>Recipes | </Link>
-              {/* <Link to = '/folders'>Folders | </Link> */}
+              <Link to = '/folders'>Folders | </Link>
               <Link to = '/add-folder'>Add Folder | </Link>
               <Link to = '/add-recipe'>Add Recipe </Link>
             </nav>
           </header>
-          <div className = 'App__nav'>
+          {/* <div className = 'App__nav'>
             {this.renderNavRoutes()}
-          </div>
+          </div> */}
           <main className='App__main'>
             {this.renderMainRoutes()}
           </main>
