@@ -1,7 +1,7 @@
 .App {
     display: grid;
     grid-template-areas: 'sidebar header' 'sidebar main';
-    grid-template-columns: 18% auto;
+    grid-template-columns: 300px auto;
     grid-template-rows: 120px 1fr;
     min-height: 100vh;
 }
