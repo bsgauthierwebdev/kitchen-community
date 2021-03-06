@@ -53,14 +53,14 @@ import FolderNav from '../FolderNav';
 export default class FolderListMain extends React.Component {
     static contextType = ApiContext;
 
+    updateFolderId = (folder) => {
+        this.setState({folderId: {value: folder, touched: true}});
+    }
+
     handleSelectFolder(e) {
         e.preventDefault();
         const folderId =  this.state.folderId.value
         this.props.history.push(`/recipes/${folderId}`)
-    }
-
-    updateFolderId = (folder) => {
-        this.setState({folderId: {value: folder, touched: true}});
     }
 
     render() {
