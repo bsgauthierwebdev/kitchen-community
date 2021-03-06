@@ -11,6 +11,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <hr />
 <img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20home-page-1.jpg'>
 
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20home-page-2.jpg'>
+
+<img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20home-page-3.jpg'>
+
 Kitchen Community is a crowd-sourced application for home cooks to share their ideas, inspirations and passions.
 
 <img src = 'https://github.com/BsgauthierWebDev/kitchen-community/blob/master/images/screenshot%20-%20about-us.jpg'>
