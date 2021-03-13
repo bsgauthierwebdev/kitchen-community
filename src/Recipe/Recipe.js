@@ -63,11 +63,11 @@ export default class Recipe extends React.Component {
                     </div>
                 </div>
                 <div className = 'Recipe__comments'>
-                    <Link to = '/comments'>
+                    <Link to = {`/recipes/${id}/comments`}>
                         <i>Comments</i>
                     </Link>
                     {' | '}
-                    <Link to = '/add-comment'>
+                    <Link to = {`/recipes/${id}/add-comment`}>
                         <i>Add Comment</i>
                     </Link>
                 </div>

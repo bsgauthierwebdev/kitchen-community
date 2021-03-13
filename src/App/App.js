@@ -108,7 +108,9 @@ class App extends Component {
                 component={RecipeListMain}
             />
         ))}
-        <Route path = '/recipes/:recipeId' component = {RecipePageMain} />
+        <Route 
+            exact path = '/recipes/:recipeId' 
+            component = {RecipePageMain} />
         <Route
             exact path = '/'
             component = {LandingPage}
@@ -118,9 +120,9 @@ class App extends Component {
             component = {AboutUs}
             />
           <Route
-              exact path = '/recipes'
-              component = {RecipeListMain}
-              />
+            exact path = '/recipes'
+            component = {RecipeListMain}
+            />
           <Route
             path = '/add-recipe'
             component = {AddRecipe}
@@ -138,7 +140,7 @@ class App extends Component {
             component = {CommentsList}
             />
           <Route 
-            path = '/add-comment'
+            path = '/recipes/:recipeId/add-comment'
             component = {AddComment}
             />
       </>
