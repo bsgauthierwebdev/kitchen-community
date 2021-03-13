@@ -11,10 +11,6 @@ class AddComment extends Component {
     constructor(props) {
         super(props);
             this.state = {
-                name: {
-                    value: "",
-                    touched: false
-                },
                 modified: "",
                 content: {
                     value: "",
@@ -25,11 +21,6 @@ class AddComment extends Component {
                     touched: false
                 }
             };
-        }
-
-        updateName(name, modified) {
-            this.setState({name: {value: name, touched: true}});
-            this.updateModified(modified);
         }
 
         updateModified(modified) {
@@ -48,27 +39,16 @@ class AddComment extends Component {
         handleSubmit(e) {
             e.preventDefault();
             const comment = {
-                name: this.state.name.value,
                 modified: this.state.modified,
                 content: this.state.content.value,
                 recipeId: this.state.recipeId.value
             }
                 this.context.addComment(comment)
-                this.props.history.push('/recipes/:id')
+                this.props.history.push('/recipes/:recipeId/comments')
         }
 
         timeStamp() {
             moment().toDate()
-        }
-
-        validateName() {
-            const name = this.state.name.value.trim();
-            if (name.length === 0) {
-                return 'Name is required';
-            }
-            else if (name.length < 3) {
-                return 'Name must be at least three characters'
-            }
         }
 
         validateContent() {
@@ -79,15 +59,45 @@ class AddComment extends Component {
         }
 
         handleClickCancel = () => {
-            this.props.history.push('/')
+            this.props.history.push('/recipes/:recipeId/comments')
         };
 
         render() {
-            const nameError = this.validateName();
             const contentError = this.validateContent();
             const modified = moment().toDate();
 
-            return
+            return (
+                <>
+                <form className = 'addComment' onSubmit = {e => this.handleSubmit(e)}>
+                    <h2>Add your comments here</h2>
+                    <div className = 'addComment__input'>
+                        <label htmlFor = 'addComment__content'>Your comment:</label>
+                        </div>
+                        <div className = 'addComment__content-input'>
+                        <textarea
+                            name = 'comments'
+                            rows = '10'
+                            placeholder = 'add your comments here'
+                            required
+                            onChange = {e => this.updateContent(e.target.value, modified)} />
+                            {this.state.content.touched && (
+                                <ValidationError message = {contentError} />
+                            )}
+                    </div>
+                    <div className = 'addComment__submit'>
+                    <button type = 'submit' className = 'addComment__button'>
+                        Save
+                    </button>
+                    </div>
+                    <div className = 'addComment__cancel'>
+                        <button type = 'button' onClick = {this.handleClickCancel}>
+                        Cancel
+                        </button>
+                    </div>
+                </form>
+                </>
+            )
         }
     }
-}
+
+export default AddComment;

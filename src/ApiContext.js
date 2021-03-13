@@ -6,6 +6,7 @@ const ApiContext = React.createContext({
     addFolder: () => {},
     addRecipe: () => {},
     deleteRecipe: () => {},
+    addComment: () => {},
 })
 
 export default ApiContext;

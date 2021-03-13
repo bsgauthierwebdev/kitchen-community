@@ -34,7 +34,7 @@ export default class RecipePageNav extends React.Component {
                 </button>
                 {folder && (
                     <h3 className = 'RecipePageNav__folder-name'>
-                        {folder.ame}
+                        {folder.name}
                     </h3>
                 )}
             </div>

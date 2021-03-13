@@ -6,6 +6,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import AboutUs from '../AboutUs/AboutUs';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import AddFolder from '../AddFolder/AddFolder';
+import AddComment from '../AddComment/AddComment';
+import CommentsList from '../CommentsList/CommentsList';
 import FolderListMain from '../FolderListMain/FolderListMain';
 import RecipeListMain from '../RecipeListMain/RecipeListMain';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
@@ -20,18 +22,21 @@ class App extends Component {
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/api/recipes`),
-      fetch(`${config.API_ENDPOINT}/api/folders`)
+      fetch(`${config.API_ENDPOINT}/api/folders`),
+      fetch(`${config.API_ENDPOINT}/api/comments`),
     ])
-      .then(([recipesRes, foldersRes]) => {
+      .then(([recipesRes, foldersRes, commentsRes]) => {
         if (!recipesRes.ok)
           return recipesRes.json().then(e => Promise.reject(e));
         if (!foldersRes.ok)
           return foldersRes.json().then(e => Promise.reject(e));
+        if (!commentsRes.ok)
+          return commentsRes.json().then(e => Promise.reject(e));
 
-        return Promise.all([recipesRes.json(), foldersRes.json()]);
+        return Promise.all([recipesRes.json(), foldersRes.json(), commentsRes.json()]);
       })
-      .then(([recipes, folders]) => {
-        this.setState({recipes, folders});
+      .then(([recipes, folders, comments]) => {
+        this.setState({recipes, folders, comments});
       })
       .catch(error => {
         console.error({error});
@@ -127,6 +132,14 @@ class App extends Component {
           <Route
             path = '/add-folder'
             component = {AddFolder}
+            />
+          <Route
+            path = '/recipes/:recipeId/comments'
+            component = {CommentsList}
+            />
+          <Route 
+            path = '/add-comment'
+            component = {AddComment}
             />
       </>
     )

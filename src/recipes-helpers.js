@@ -11,4 +11,9 @@ export const getRecipesForFolder = (recipes = [], folderId) => (
 )
 
 export const countRecipesForFolder = (recipes=[], folderId) =>
-        recipes.filter(recipe => recipe.folderId == folderId).length
+    recipes.filter(recipe => recipe.folderId == folderId).length
+
+export const getCommentsForRecipe = (comments = [], recipeId) =>
+    (!recipeId)
+        ? comments
+        : comments.filter(comment => comment.recipeId == recipeId)
