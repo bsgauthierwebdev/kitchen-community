@@ -59,7 +59,8 @@ class AddComment extends Component {
         }
 
         handleClickCancel = () => {
-            this.props.history.push('/recipes/:recipeId/comments')
+            let recipeId = this.state.recipeId.value
+            this.props.history.push(`/recipes/${recipeId}`)
         };
 
         render() {
