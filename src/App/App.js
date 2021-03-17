@@ -12,6 +12,7 @@ import FolderListMain from '../FolderListMain/FolderListMain';
 import RecipeListMain from '../RecipeListMain/RecipeListMain';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import './App.css';
+import { countRecipesForFolder } from '../recipes-helpers';
 
 class App extends Component {
   state = {
@@ -97,6 +98,30 @@ class App extends Component {
       })
   }
 
+  addComment = commentData => {
+    fetch(`${config.API_ENDPOINT}/api/comments`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(commentData)
+    })
+      .then(res => res.json())
+      .then(resJSON => {
+        console.log(resJSON)
+        const newComments = [...this.state.comments, resJSON]
+        console.log(newComments)
+        this.setState({comments: newComments})
+        console.log(this.state)
+
+        this.props.history.push(`/recipes/${commentData.recipeId}/comments`)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   renderMainRoutes() {
     return (
       <>
@@ -153,7 +178,8 @@ class App extends Component {
       folders: this.state.folders,
       deleteRecipe: this.handleDeleteRecipe,
       addFolder: this.addFolder,
-      addRecipe: this.addRecipe
+      addRecipe: this.addRecipe,
+      addComment: this.addComment
     };
     return (
       <ApiContext.Provider value = {value}>

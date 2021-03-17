@@ -41,10 +41,9 @@ class AddComment extends Component {
             const comment = {
                 modified: this.state.modified,
                 content: this.state.content.value,
-                recipeId: this.state.recipeId.value
+                recipeId: this.props.match.params.recipeId
             }
                 this.context.addComment(comment)
-                this.props.history.push('/recipes/:recipeId/comments')
         }
 
         timeStamp() {
